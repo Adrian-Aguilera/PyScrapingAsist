@@ -9,11 +9,11 @@ Un proyecto que permitirá hacer web scrapping de manera mucho mas facil
 Para poder instalar el proyecto, crearemos un .venv para instalar las dependencias
 
 ```bash
-  python -m venv .venv
+  python3 -m venv .venv
   .venv\Scripts\activate
 ```
 una vez instalado y corriendo la terminal del .venv, instalar las dependencias corriendo
 
 ```bash
-  pip install requirements.txt
+  pip install -r requirements.txt
 ```

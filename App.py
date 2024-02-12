@@ -1,5 +1,5 @@
 from openai import OpenAI
-from GetdataGPT import GetdataGPT
+from Class.GetdataGPT import GetdataGPT
 
 
 key = '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'

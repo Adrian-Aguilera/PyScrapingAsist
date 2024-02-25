@@ -21,27 +21,13 @@ class Tools:
             soup = BeautifulSoup(response.content, 'html.parser')
             result = soup.prettify()
             return result
-            
         else:
             return (f'Error al obtener la página. Código de respuesta: {response.status_code}')
-        
-        
-        
     
-    def FilterHTML (self, html):
-        # Variables Necesarias para realizar la peticion
-        key = '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' 
-        model = "gpt-3.5-turbo"
-        # Instancia de la clase 
-        gpt = GetdataGPT(key)
-      
-        # Division Del Codigo HTML
-        middle_index = len(html) // 2
-        firstPart = html[:middle_index]
-        SecondPart = html[middle_index:]
-        # Envía Cada Parte Por Separado a ChatGPT
-        html1 = gpt.get_data(model, firstPart.strip()) 
-        html2 = gpt.get_data(model, SecondPart.strip())
-        # Concatenamos los Resultados De ChatGPT
-        full_html_structure = f' Las Clases Son:  \nParte 1: {html1.strip()} \nParte 2: {html2.strip()}'
-        return full_html_structure
+    def FilterHTML (self, htmldata, n):
+        longitud_html=len(htmldata)
+        #se divide la longitud de la data entre el numero que le pasemos
+        log_parte= longitud_html//n
+        
+        data = [htmldata[i:i + log_parte] for i in range(0, longitud_html, log_parte)]
+        return data

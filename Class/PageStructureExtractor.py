@@ -31,3 +31,8 @@ class Tools:
         
         data = [htmldata[i:i + log_parte] for i in range(0, longitud_html, log_parte)]
         return data
+    
+    
+    
+    
+    # Realizar Funct UserAgent

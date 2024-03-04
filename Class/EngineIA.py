@@ -1,12 +1,13 @@
 from openai import OpenAI
 
 class GetdataGPT:
-    def __init__(self, api_key):
+    def __init__(self, api_key, promt=None):
         self.client = OpenAI(api_key=api_key)
+        self.Promt = promt
         
     def get_data(self, model, html_content):
         messages = [
-            {"role": "system", "content": "Extrae exclusivamente las clases de las etiquetas <img> y de las etiquetas <div> del siguiente HTML, sin incluir ningún mensaje adicional."},
+            {"role": "system", "content": f"{self.Promt}"},
             {"role": "user", "content": html_content}
         ]
 

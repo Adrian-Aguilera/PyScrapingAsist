@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from Class.EngineIA import GetdataGPT
 from openai import OpenAI 
+from ControllerApp import EngineApp
 class Tools:
     
     def __init__(self, api_key):
@@ -9,17 +10,18 @@ class Tools:
         self.Gpt = GetdataGPT(api_key=api_key)
         
     def getUserAgentRamdon(self):
-        #
-        return
+        key, model, _, PrototypeUserAgent = EngineApp.venv_data()
+        UsertAgentRamdon = GetdataGPT.get_userAgent(model, PrototypeUserAgent)
+        return UsertAgentRamdon
         
     def getStructureHTML(self,url):
-        # Pendiente reaizar funcion para el userAgent
-        response = requests.get(url, timeout=5, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'})
+        # Pendiente realizar funcion para el userAgent
+        response = requests.get(url, timeout=5, headers={'User-Agent': self.getUserAgentRamdon()})
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
             result = soup.prettify()
-            return result
+            return result + self.getUserAgentRamdon()
         else:
             return (f'Error al obtener la página. Código de respuesta: {response.status_code}')
     

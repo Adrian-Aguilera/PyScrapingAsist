@@ -62,4 +62,4 @@ class EngineApp:
                         clases_encontradas = self.get_classes(data)
                         print(f"CLASES (Diagnóstico): {clases_encontradas}")
         
-    """"""
+    

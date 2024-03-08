@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from Class.EngineIA import GetdataGPT
 from openai import OpenAI 
-from ControllerApp import EngineApp
+from Class.Credentials import Credenciales
 class Tools:
     
     def __init__(self, api_key):
@@ -10,7 +10,7 @@ class Tools:
         self.Gpt = GetdataGPT(api_key=api_key)
         
     def getUserAgentRamdon(self):
-        key, model, _, PrototypeUserAgent = EngineApp.venv_data()
+        key, model, _, PrototypeUserAgent = Credenciales.venv_data()
         UsertAgentRamdon = GetdataGPT.get_userAgent(model, PrototypeUserAgent)
         return UsertAgentRamdon
         
